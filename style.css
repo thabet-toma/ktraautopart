@@ -1,0 +1,213 @@
+/* KTRA Tyres - Custom Stylesheet */
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Rubik:wght@400;500;600;700;800;900&family=Cairo:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&family=Changa:wght@500;600;700;800&display=swap');
+
+:root {
+  --primary: #f59e0b;
+  --primary-hover: #d97706;
+  --bg-dark: #07090e;
+  --bg-card: #0d121d;
+  --bg-card-hover: #141b2b;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-glow: rgba(245, 158, 11, 0.3);
+  --accent-blue: #0284c7;
+  --accent-red: #ef4444;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Rubik', 'Heebo', 'Cairo', 'Outfit', system-ui, sans-serif;
+  background-color: var(--bg-dark);
+  color: #f1f5f9;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* RTL Specific typography for Hebrew & Arabic */
+[lang="he"] body {
+  font-family: 'Rubik', 'Heebo', system-ui, sans-serif;
+}
+[lang="ar"] body {
+  font-family: 'Cairo', 'Changa', system-ui, sans-serif;
+}
+[lang="en"] body {
+  font-family: 'Outfit', system-ui, sans-serif;
+}
+
+/* Tread Pattern Background */
+.bg-tread-pattern {
+  background-color: #07090e;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(245, 158, 11, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at 85% 60%, rgba(2, 132, 199, 0.06) 0%, transparent 50%),
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+}
+
+.tread-hero-overlay {
+  background: 
+    linear-gradient(180deg, rgba(7, 9, 14, 0.4) 0%, rgba(7, 9, 14, 0.85) 60%, #07090e 100%),
+    radial-gradient(circle at 50% 30%, rgba(245, 158, 11, 0.15) 0%, transparent 55%);
+}
+
+/* Glassmorphism Cards */
+.glass-panel {
+  background: rgba(13, 18, 29, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel:hover {
+  border-color: rgba(245, 158, 11, 0.35);
+  box-shadow: 0 14px 40px -10px rgba(245, 158, 11, 0.15);
+  transform: translateY(-2px);
+}
+
+.glass-card {
+  background: rgba(13, 18, 29, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(245, 158, 11, 0.4);
+  box-shadow: 0 20px 45px -15px rgba(245, 158, 11, 0.25);
+}
+
+/* EU Tyre Label Badges */
+.badge-eu-a { background: #008f39; color: #fff; }
+.badge-eu-b { background: #50b848; color: #fff; }
+.badge-eu-c { background: #b0d235; color: #111; }
+.badge-eu-d { background: #ffd100; color: #111; }
+.badge-eu-e { background: #f39200; color: #fff; }
+.badge-eu-f { background: #e30613; color: #fff; }
+
+/* Custom Gradient Text */
+.text-gradient-amber {
+  background: linear-gradient(135deg, #fef08a 0%, #f59e0b 50%, #d97706 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-blue {
+  background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Infinite Brand Marquee */
+.marquee-container {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  gap: 2rem;
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
+.marquee-content {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-around;
+  min-width: 100%;
+  gap: 2rem;
+  animation: scroll-marquee 35s linear infinite;
+}
+
+.marquee-container:hover .marquee-content {
+  animation-play-state: paused;
+}
+
+[dir="rtl"] .marquee-content {
+  animation-direction: reverse;
+}
+
+@keyframes scroll-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* Tyre Tread Accent Line */
+.tread-divider {
+  height: 6px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    #f59e0b,
+    #f59e0b 16px,
+    transparent 16px,
+    transparent 24px
+  );
+  opacity: 0.8;
+}
+
+/* Glowing Pulsing Beacon */
+.pulsing-dot {
+  position: relative;
+}
+.pulsing-dot::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 9999px;
+  background: currentColor;
+  opacity: 0.4;
+  animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.9); opacity: 0.8; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #07090e;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #f59e0b;
+}
+
+/* Image Zoom on Card Hover */
+.tire-img-wrap img {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+}
+.glass-card:hover .tire-img-wrap img {
+  transform: scale(1.08) rotate(-1deg);
+  filter: brightness(1.08);
+}
+
+/* Print Styling for Instant Corporate Profile Deck */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #111827 !important;
+  }
+  nav, #hero-cta-group, #finder-section, #rfq-modal, #supplier-modal, #datasheet-modal, .no-print {
+    display: none !important;
+  }
+  .glass-card, .glass-panel {
+    border: 1px solid #e2e8f0 !important;
+    background: #ffffff !important;
+    color: #111827 !important;
+    box-shadow: none !important;
+  }
+}
